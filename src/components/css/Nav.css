@@ -1,0 +1,108 @@
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color:rgb(138, 185, 252);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    height: 40px;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    margin: 50px auto;
+    width: fit-content;
+    overflow: hidden;
+    
+    /* Glassy transparent base */
+    background: rgba(255, 255, 255, 0.1);
+    
+    /* HEAVY glass effect */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    
+    /* Shiny border */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 100px;
+    
+    /* Depth shadows */
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 2px 1px 1px rgba(255, 255, 255, 0.3),
+        inset -2px -1px 1px rgba(255, 255, 255, 0.1);
+    
+    transition: all 0.3s ease;
+}
+
+/* TOP SHINE - this is the key to looking shiny */
+.nav-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 5%;
+    right: 5%;
+    height: 40%;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0)
+    );
+    border-radius: 100px 100px 0 0;
+    pointer-events: none;
+}
+
+/* ANIMATED SHINE EFFECT on hover */
+.nav-container::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: rotate(45deg);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.nav-container:hover::after {
+    opacity: 1;
+    animation: shine 1.5s ease infinite;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+.nav-container:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 12px 48px rgba(0, 0, 0, 0.15),
+        inset 0 1px 1px rgba(255, 255, 255, 1),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.nav-container a{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;  /* Change this number */
+    font-weight: 400;  /* Change this for boldness: 300, 400, 500, 600, 700 */
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
