@@ -1,12 +1,31 @@
 
 
 body {
-    margin: 0;
+    margin: 40px;
     padding: 0;
-    background-color:rgb(138, 185, 252);
+    background-color:rgb(0, 0, 0);
+}
+.nav-logo{
+    display: flex;
+    align-items:center;
+    margin: 5px;
+}
+
+.logo-image {
+    height: 60px; /* Adjust this to make logo smaller/larger */
+    width: auto;
+    object-fit: contain;
 }
 
 .nav-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:start;
+    margin-top: 0;
+}
+.nav-bar {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,7 +33,7 @@ body {
     height: 40px;
     padding-left: 3rem;
     padding-right: 3rem;
-    margin: 50px auto;
+    margin: 10px auto;
     width: fit-content;
     overflow: hidden;
     
@@ -26,12 +45,12 @@ body {
     -webkit-backdrop-filter: blur(25px) saturate(180%);
     
     /* Shiny border */
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 100px;
     
     /* Depth shadows */
     box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.1),
+        0 8px 32px rgba(255, 255, 255, 0.1),
         inset 2px 1px 1px rgba(255, 255, 255, 0.3),
         inset -2px -1px 1px rgba(255, 255, 255, 0.1);
     
@@ -39,7 +58,7 @@ body {
 }
 
 /* TOP SHINE - this is the key to looking shiny */
-.nav-container::before {
+.nav-bar::before {
     content: '';
     position: absolute;
     top: 0;
@@ -48,15 +67,15 @@ body {
     height: 40%;
     background: linear-gradient(
         to bottom,
-        rgba(255, 255, 255, 0.3),
-        rgba(255, 255, 255, 0)
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0)
     );
     border-radius: 100px 100px 0 0;
     pointer-events: none;
 }
 
 /* ANIMATED SHINE EFFECT on hover */
-.nav-container::after {
+.nav-bar::after {
     content: '';
     position: absolute;
     top: -50%;
@@ -75,7 +94,7 @@ body {
     transition: opacity 0.5s ease;
 }
 
-.nav-container:hover::after {
+.nav-bar:hover::after {
     opacity: 1;
     animation: shine 1.5s ease infinite;
 }
@@ -89,7 +108,7 @@ body {
     }
 }
 
-.nav-container:hover {
+.nav-bar:hover {
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: 
@@ -98,11 +117,98 @@ body {
         inset 0 -1px 1px rgba(0, 0, 0, 0.15);
 }
 
-.nav-container a{
+.nav-bar a{
     font-family: 'Quicksand', sans-serif;
     font-size: 16px;  /* Change this number */
     font-weight: 400;  /* Change this for boldness: 300, 400, 500, 600, 700 */
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     transition: all 0.2s ease;
+}
+
+.nav-bar a:active {
+    text-decoration: underline;
+}
+
+.nav-bar a:hover {
+    color: rgba(255, 255, 255, 1);
+    transform: translateY(-1px);
+
+}
+
+.nav-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 40px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 10px 5px;
+    width: fit-content;
+    overflow: hidden;
+
+    /* Your glassy effect */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    
+    /* Shiny border */
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 100px;
+    
+    /* Depth shadows */
+    box-shadow: 
+        0 8px 32px rgba(255, 255, 255, 0.1),
+        inset 2px 1px 1px rgba(255, 255, 255, 0.3),
+        inset -2px -1px 1px rgba(255, 255, 255, 0.1);
+    
+    transition: all 0.3s ease;
+}
+
+.nav-search:focus-within {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+    
+    /* HEAVY glass effect */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    
+    /* Shiny border */
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 100px;
+    
+    /* Depth shadows */
+    box-shadow: 
+        0 8px 32px rgba(255, 255, 255, 0.1),
+        inset 2px 1px 1px rgba(255, 255, 255, 0.5),
+        inset -2px -1px 1px rgba(255, 255, 255, 0.5);
+    
+}
+
+.nav-search:hover{
+    background: rgba(255, 255, 255, 0.1);
+    
+    /* HEAVY glass effect */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    
+    /* Shiny border */
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 100px;
+    
+    /* Depth shadows */
+    box-shadow: 
+        0 8px 32px rgba(255, 255, 255, 0.1),
+        inset 2px 1px 1px rgba(255, 255, 255, 0.5),
+        inset -2px -1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.search-input {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;  /* Change this number */
+    font-weight: 500;  /* Change this for boldness: 300, 400, 500, 600, 700 */
+    color: rgba(255, 255, 255, 0.8);
+    background: transparent;
+    border: none;
+    outline: none;
 }
